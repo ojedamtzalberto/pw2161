@@ -1,6 +1,6 @@
 body {
-	background: black;
-	color: #d9d9d9;
+	
+	color: gray;
 	margin: 0 auto;
 	max-width: 1024px;
 	font-family: sans-serif;
@@ -9,7 +9,7 @@ body {
 header {
 	background: #d9d9d9;
 	border: 1px solid white;	
-	border-radius: 5px;
+	/*border-radius: 5px;*/
 	color: black;
 	margin-top: 10px;
 }
@@ -51,7 +51,7 @@ header nav ul li:hover {
 }
 
 #seccion1 article {
-	border: 5px solid white;
+	border: 5px solid black;
 	display: inline-block;
 	vertical-align: top;
 	width: 48.75%;
