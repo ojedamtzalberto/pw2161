@@ -1,0 +1,90 @@
+body {
+	font-size: 16px;
+	margin: 0 auto;
+	max-width: 1078px; /*El diseñador lo quiso*/
+}
+
+a {
+	color: #A9A5A6;
+	text-decoration: none;
+}
+
+header input {
+	float: right;
+	margin-right: -240px;
+	margin-top: 20px;
+	position: relative;	
+}
+
+header nav {
+	margin-left: 220px;
+}
+
+header nav ul li {
+	border-bottom: 2.5px solid #E6E7E8;
+	color: #A9A5A6;
+	display: inline-block;
+	font-family: 'Josefin Sans', sans-serif;
+	font-weight: 300;
+	font-size: 1.8em;
+	margin-right: 15px;
+}
+
+#bgoffer {
+	left: 20%;
+	position: absolute;
+	top: 150px;
+}
+
+#paint {
+	float: right;
+	margin-top: 40px;
+}
+
+#granthams {
+	margin-top: 30px;
+	margin-left: 25px;
+}
+
+#primerSeccion {
+	margin-top: 80px;
+}
+
+#primerSeccion article {
+	display: inline-block;
+	margin-left: 25px;
+	vertical-align: top;
+}
+
+#secc01Art01 img 
+{
+	width: 100%;
+}
+
+#secc01Art01 {
+	width: 65%;
+}
+
+#secc01Art02 {
+	width: 20%;
+}
+
+#segundaSeccion article {
+	text-align: right;
+}
+
+.numerotelefono {
+	color: #FF0099;
+	font-size: 2.5em;
+	font-weight: bold;
+}
+
+#terceraSeccion article img {
+	vertical-align: middle;
+}
+
+.wecanoffer {
+	color: #FF0099;
+	font-size: 3.5em;
+	font-weight: bold;
+}
