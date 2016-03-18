@@ -1,0 +1,62 @@
+@font-face {
+    font-family: 'icomoon';
+    src:    url('fonts/icomoon.eot?d9bkzc');
+    src:    url('fonts/icomoon.eot?d9bkzc#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?d9bkzc') format('truetype'),
+        url('fonts/icomoon.woff?d9bkzc') format('woff'),
+        url('fonts/icomoon.svg?d9bkzc#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-home:after {
+    content: "\e900";
+}
+.icon-pencil:before {
+    content: "\e600";
+}
+.icon-pencil2:before {
+    content: "\e901";
+}
+.icon-quill:before {
+    content: "\e902";
+}
+.icon-pen:before {
+    content: "\e903";
+}
+.icon-blog:before {
+    content: "\e904";
+}
+.icon-eyedropper:before {
+    content: "\e905";
+}
+.icon-play:before {
+    content: "\e906";
+}
+.icon-video-camera:before {
+    content: "\e907";
+}
+.icon-pacman:before {
+    content: "\e603";
+}
+.icon-mic:before {
+    content: "\e604";
+}
+.icon-folder:before {
+    content: "\e908";
+}
