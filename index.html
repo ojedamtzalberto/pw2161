@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="utf-8">
+	<meta charset="UTF-8">
 	<title>Primer Página HTML5</title>
+	<link href='https://fonts.googleapis.com/css?family=Exo+2:400,900italic' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
 	<header>
-		<img src="img/cuervo.jpg" alt="cuervo">
-		<h1>Mi aplicación</h1>
+		<img src="img/logoitc.png" alt="">
+		<h1>
+			<span class="icon-home">
+				Mi aplicación
+			</span>			
+		</h1>
 		<nav>
 			<ul>
 				<li>Opciones 1</li>
@@ -17,67 +23,62 @@
 				<li>Opciones 4</li>
 				<li>Opciones 5</li>
 			</ul>
-		</nav>	
-	</header>
-	<main>	
-		<section id="seccion1">
-			<article>
-				<h2>Artículo loremipsum</h2>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</article>
-			<article>
-				Otro Artículo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</article>
-		</section>
-		<section>
-				<article>
-					HTML5
-					<form action="" method="">
-						<input type="password" required autofocus placeholder="Escribe algo aquí" size=12 maxlength=8> <br>
-						<input type="date" required> <br>
-						<input type="number" max=10 min=0 required> <br>
-						<input type="email" max=10 min=0 required> <br>
-						<input type="radio" name="genero" value="f" checked>Femenino <br>
-						<input type="radio" name="genero" value="m">Masculino <br>
-						<input type="radio" name="genero" value="o">Otros <br>
-						<select name="genero2" id="">
-							<option value="Selecciona">Selecciona</option>							
-							<option value="Femenino">Femenino</option>
-							<option value="Masculino">Masculino</option>
-							<option value="Otros">Otros</option>
-						</select>
-						<input type="submit" required> <br>
-					</form>												
-				</article>
-			</section>	
-		<section>
-			No es obligatorio poner artículos dentro de secciones.			
-		</section>	
-		<section>
-			<section>
-				Nota: No poner secciones dentro de secciones porque no.
-				Les sale el coco.
-			</section>
-		</section>	
-		Texto libre, si. Más deben de usarlo en pocas ocasiones.
+		</nav>
+	</header>	
+	<main>
+	<section id="seccion1">
 		<article>
-			Si se pueden utilizar artículos sin sección.
-			Se recomienda las secciones y si vas a poner solo artículos, mejor que sean secciones.
+			<h2>Artículo de loremipsum</h2>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure animi excepturi, molestiae, facere incidunt temporibus inventore ratione repellendus in quod vel provident! Porro ullam beatae ad saepe fugiat repudiandae, voluptas.
 		</article>
+		<article>
+			Otro Artículo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam nulla aliquid consequatur, incidunt non quibusdam officia dolor, odio animi enim corporis explicabo esse voluptatum eveniet, nam eos eaque fuga quas!
+		</article>
+	</section>
+	<section>
+		<article>
+			HTML5
+			<form action="" method="">
+				Escribe algo aquí: <br>
+				<input type="text" required  placeholder="Escribe algo aquí" size=8 maxlength=8 autofocus> <br>
+				<input type="date" required> <br>
+				<input type="number" max=10 min=0 value=0 required>
+				<input type="email" required>
+				<input type="radio" name="genero" value="0">Femenino
+				<input type="radio" name="genero" value="1">Masculino
+				<select name="genero2" id="">
+					<option value="">Femenino</option>
+					<option value="">Masculino</option>
+					<option value="">Otros</option>
+				</select>
+				<input type="submit" required>
+			</form>
+		</article>
+	</section>
+	<section>
+		No es obligatorio poner artículos dentro de
+		secciones.
+	</section>
+	<section>
+		<section>
+			Nota: No poner secciones dentro
+			de secciones porque no.
+			Les sale el coco.
+		</section>
+	</section>
+	Texto libre, si. Más deben de usarlo
+	en pocas ocasiones.
+	<article>
+		Si se pueden utilizar artículos sin sección.
+		Se recomienda la secciones y si vas a poner
+		solo artículos, mejor que sean secciones.
+	</article>
 	</main>
 	<footer>
 		<small>&copy; Programación Web | 2016.</small>
 	</footer>
-	<!-- ESTUDIAR ETIQUETA ASIDE -->
 </body>
 </html>
+
+
+
