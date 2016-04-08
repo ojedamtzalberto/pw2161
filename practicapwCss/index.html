@@ -10,7 +10,7 @@
 		<img src="img/logo.jpg" alt="Logo">
 		<br>
 		<span>MI TEMA EN HTML 5</span>
-		<div>
+		<div id="logos">
 			<img src="img/red1.png" alt="">
 			<img src="img/red2.png" alt="">
 			<img src="img/red3.png" alt="">
@@ -27,48 +27,32 @@
 			</ul>
 		</nav>
 	</header>
-	<section id="seccion01">
-		<article>
-			<img src="img/slider.jpg" alt="">			
-		</article>
-		<aside>
-			<span class="barra-naranja">Publicidad</span>
-			<br>
-			<img src="img/publicidad.jpg" alt="">
-			<img src="img/publicidad.jpg" alt="">
-			<br>
-			<img src="img/publicidad.jpg" alt="">
-			<img src="img/publicidad.jpg" alt="">
-		</aside>			
-	</section>
-	<section>
-		<article>
-			<h1>Titulo del Post</h1>
-			<img src="img/img-post.jpg" alt="">
-		</article>
-		<article>
-			<span id="info-publicacion">Por Admin El 30/05/2012. En Pruebas</span>
-			<br>
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, nihil totam nam et, nemo non quis rem magni beatae! Quisquam magni fuga distinctio ducimus nihil dolores nostrum architecto, quia blanditiis!
-			<br>
-			<span id="leer-mas">Leer Mas..</span>
-		</article>
-	</section>
+
 	<aside>
 		<section>
-			<span class="barra-naranja">Publicidad</span>
+			<div class="barra-naranja">
+				<div>Publicidad</div>
+			</div>
 			<br>
 			<img src="img/publicidad.jpg" alt="">
+			<img src="img/publicidad.jpg" alt="">			
+			<img src="img/publicidad.jpg" alt="">
+			<img src="img/publicidad.jpg" alt="">
 		</section>
-		<section>
-			<span class="barra-naranja">Buscador</span>
+
+		<section id="aside-form">
+			<div class="barra-naranja">
+				<div>Buscador</div>
+			</div>
 			<form action="post">
 				<input type="text" placeholder="Search...">
 				<input type="submit" value="Go">
 			</form>
 		</section>
 		<section>
-			<span class="barra-naranja">Categorias</span>
+			<div class="barra-naranja">
+				<div>Categorias</div>
+			</div>
 			<ul>
 				<li>categoria 1</li>
 				<li>categoria 2</li>
@@ -79,6 +63,28 @@
 				<li>categoria 7</li>
 			</ul>
 		</section>
+	</aside>		
+
+	<section id="seccion01">
+		<article>
+			<img src="img/slider.jpg" alt="">			
+			<hr>
+		</article>
+	</section>
+	<section id="seccion02">
+		<article id="titulo-post">
+			<h1>Titulo del Post</h1>
+			<img src="img/img-post.jpg" alt="">
+		</article>
+		<article id="contenido-post">
+			<div id="info-post">Por Admin El 30/05/2012. En Pruebas</div>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, nihil totam nam et, nemo non quis rem magni beatae! Quisquam magni fuga distinctio ducimus nihil dolores nostrum architecto, quia blanditiis! lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti repellat tenetur repudiandae debitis voluptates, recusandae, aliquid iste mollitia eaque quidem minus esse quam reprehenderit ratione voluptatem temporibus, incidunt voluptate harum?</p>			
+		</article>
+		<div id="leer-mas">Leer Mas..</div>
+	</section>
+	<hr>
+	<aside>
+		
 	</aside>
 </body>
 </html>

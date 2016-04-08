@@ -6,18 +6,54 @@ body {
 }
 
 aside {
-	vertical-align: top;
+	float: right;
+	margin-left: 20px;
+	margin-bottom: 20px;
+	width: 30.4%;
 }
 
-div {
-	float: right;
+aside section, #info-post {
+	background-color: #FAFAFA;
+	border: 1px solid gray;
+	border-radius: 10px;
+	margin-top: 20px;
+	padding: 0 0 5px;
+}
+
+aside section ul li {
+	font-size: 12px;
+}
+
+aside section ul li::after {
+	content: "-----------------------------------------------";
+	display: block;
+	font-size: 14px;
+}
+
+form {
+	border: 1px solid gray;
+	border-radius: 20px;
+	margin: 15px auto 5px;
+	padding: 2px 0;	
+	width: 75%;
+}
+
+form input[type="text"] {
+	border: 1px solid gray;
+	border-radius: 20px;
+	color: black;
+	padding-left: 5px;
+	width: 180px;
 }
 
 form input[type="submit"]
 {
 	background: #d9d9d9;
-	border-radius: 50%;
+	border-radius: 100%;
+	border: 1px solid black;
 	color: white;
+	font-size: 10px;
+	padding: 3px 1px;
 }
 
 header span {
@@ -30,22 +66,74 @@ nav {
 	margin-top: 50px;
 }
 
+nav ul {
+	padding: 0;
+}
+
 nav ul li{
-	color: white;
 	display: inline-block;
 	margin-right: 15px;
 }
 
-#seccion01 article, #seccion01 aside {
-	display: inline-block;
-}
-
 .barra-naranja {
-	background: orange;
+	background: linear-gradient(orange,yellow,orange,orange);
 	border-radius: 10px;
+	width: 100%;
 }
 
-.barra-naranja ul, .barra-naranja span {
-	padding-top: 8px;
-	padding-bottom: 8px;
+.barra-naranja ul, .barra-naranja div {
+	color: white;
+	font-weight: bold;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+}
+
+.barra-naranja :not(ul) {
+	font-size: 14px;
+	text-align: center;
+}
+
+#aside-form {
+	text-align: center;
+}
+
+#contenido-post {	
+	margin-top: 47px;
+	padding-left: 10px;
+	position: relative;
+	vertical-align: top;
+	width: 48%;
+}
+
+#info-post {
+	box-shadow: 0 1px 1px #888888;
+	margin-top: 0;
+	height: 100%;
+	padding: 4px 4px; 
+}
+
+#leer-mas {
+	background-color: #CCCCCC;
+	border-radius: 10px;
+	color: white;
+	font-style: italic;
+	font-weight: bold;
+	padding: 8px 5px;
+	position: absolute;
+	bottom: 3;
+	left: 175px;
+}
+
+#logos {
+	float: right;	
+}
+
+#seccion02 {
+	font-size: 12px;
+	position: relative;	
+}
+
+#seccion02 article{	
+	display: inline-block;	
 }
