@@ -1,0 +1,140 @@
+body {
+	font-size: 16px;
+	font-family: sans-serif;
+	margin: 0 auto;
+	width: 1024px;
+}
+
+article div {
+	margin-bottom: 5px;
+}
+
+header {
+	margin-bottom: 50px;
+}
+
+h1 {
+	color: #565656;
+	font-family: serif;
+}
+
+header p {
+	color: #82BCB6;
+}
+
+header div {
+	display: inline-block;
+}
+
+header nav, header img {
+	display: inline-block;
+}
+
+header nav ul {
+	font-family: 'Lora';
+}
+
+header nav ul li:nth-child(1) {
+	color: #F6A099;
+}
+
+header nav ul li {
+	color: #565656;
+	display: inline-block;
+	margin-left: 40px;
+	text-transform: uppercase;
+}
+
+#content-info {
+	vertical-align: top;
+	margin-left: 20px;
+	width: 55%;
+}
+
+#content-info p {
+	font-size: 12px;
+}
+
+#content-title {
+	width: 80%;
+}
+
+#amarillo {
+	background-color: #F7C950;
+}
+
+#verde {
+	background-color: #82BCB6;
+}
+
+#foot-year {
+	color: #DD7779;
+	font-size: 12px;
+	font-style: italic;
+}
+
+#foot-social {
+	float: right;
+	font-size: 10px;
+}
+
+#rosa {
+	background-color: #F6A099;
+}
+
+#navandquote {
+	float: right;
+	padding-top: 100px;
+	position: relative;
+	width: 80%
+}
+
+#navandquote p {
+	position:absolute;
+	right: 0;
+	top: 10px;
+}
+
+#seccion01 {
+	border: 1px;
+}
+
+#seccion01 article {
+	display: inline-block;
+}
+
+#seccion01 article img {
+	border-radius: 100%;
+	height: 350px;
+	margin-right: 50px;
+}
+
+#seccion02 {
+	float: right;
+}
+
+.circulos, .circuloGrande {
+	border-radius: 100%;
+	color: white;
+	display: inline-block;
+	font-size: 30px;
+	font-family: 'Marck Script';
+	height: 130px;
+	margin-right: 25px;
+	text-align: center;
+	width: 130px;
+}
+
+.circuloGrande {
+	height: 150px;
+	width: 150px;
+	margin-right: 0;
+}
+
+.circulos div{
+	margin-top: 50px;
+}
+
+.circuloGrande div {
+	margin-top: 60px;
+}
