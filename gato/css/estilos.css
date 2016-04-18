@@ -1,0 +1,16 @@
+body {
+	margin: 0 auto;
+	text-align: center;
+	width: 1024px;
+}
+
+form {
+	margin: 0 auto;
+	width: 240px;
+}
+
+td {
+	border: 5px solid red;
+	height: 80px;
+	width: 90px;
+}

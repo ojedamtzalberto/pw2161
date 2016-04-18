@@ -8,7 +8,7 @@ function igual() {
 	document.calculadora.resultado.value = eval(valor1+operador+valor2);
 }
 
-function limpiar() {
+function borrar() {
 	document.calculadora.operando1.value = "0";
 	document.calculadora.operando2.value = "0";
 	document.calculadora.resultado.value = "0";
