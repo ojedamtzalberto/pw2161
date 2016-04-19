@@ -1,16 +1,28 @@
-body {
-	margin: 0 auto;
+body {	
+	margin: 0 auto;	
 	text-align: center;
 	width: 1024px;
 }
 
-form {
+form {	
 	margin: 0 auto;
-	width: 240px;
+	width: 500px;
 }
 
-td {
-	border: 5px solid red;
-	height: 80px;
-	width: 90px;
+table {
+	border-collapse: collapse;	
+}
+
+td {		
+	font-size: 95px;
+	height: 150px;	
+	width: 250px;	
+}
+
+.right {
+	border-right: 5px solid red;
+}
+
+.lower {
+	border-bottom: 5px solid red;	
 }
