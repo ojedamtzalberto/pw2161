@@ -1,14 +1,21 @@
-var turno = true;
-var c11="11", c12="12", c13="13", c21="21", c22="22", c23="23", c31="31", c32="32", c33="33";
+var contador = 0;
+var c11="1", c12="2", c13="3", c21="4", c22="5", c23="6", c31="7", c32="8", c33="9";
 
-function accion(td) {		
-	if(turno && td.innerText == "") 
-		td.innerText = "O";			
-	else if(td.innerText == "")
-		td.innerText = "X";		
-	
-	turno = !turno;	
-	asigna(td);
+function accion(id) {	
+	var td = document.getElementById(id);
+	console.log(td);
+
+	if(contador%2==0 && td.innerText == "") {
+		td.innerText = "O";		
+		contador++;
+		asigna(td);
+	}		
+	else if(td.innerText == "") {
+		td.innerText = "X";
+		contador++;
+		asigna(td);
+	}
+	console.log(contador);
 }
 
 function asigna(elemento) {
@@ -31,15 +38,35 @@ function asigna(elemento) {
 	else if(elemento.id == c33)
 		c33 = elemento.innerText;
 
-	revisa();
+	revisa(elemento);
 }
 
-function revisa() {
+function revisa(elemento) {
 	if((c11==c12 & c12==c13) || (c11==c21 && c21==c31) || (c11==c22 && c22==c33) || (c12==c22 && c22==c32) || (c13==c23 && c23==c33) 
-		||(c21==c22 && c22==c23) || (c31==c32 && c32==c33) || (c13==c22 && c22==c31))
-		ganaste();
+		||(c21==c22 && c22==c23) || (c31==c32 && c32==c33) || (c13==c22 && c22==c31)) {
+		alert("GANA " + elemento.innerText + "!");
+		limpiar();
+	}
+	else if(contador == 9) {
+		alert("EMPATE");
+		limpiar();
+	}
+		
 }
 
-function ganaste() {
-	alert("GANASTE!");
+function limpiar() {
+	var cuadros = document.getElementsByTagName("td");
+	for(i=0; i<cuadros.length; i++) {
+		cuadros[i].innerText = "";
+	}
+	c11="1"; c12="2"; c13="3"; c21="4"; c22="5"; c23="6"; c31="7"; c32="8"; c33="9";
+	contador = 0;
+	console.log(contador);
+}
+
+document.onkeypress = function(evt) {
+	evt = evt || window.event;
+	var charCode = evt.keyCode || evt.which;
+	var charStr = String.fromCharCode(charCode);
+	accion(charStr);
 }
