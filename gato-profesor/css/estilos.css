@@ -1,0 +1,33 @@
+body {
+	font-size: 16px;
+	margin: 0 auto;
+	max-width: 1024px;
+}
+
+header {
+	text-align: center;
+}
+
+section article table {
+	border-collapse: collapse;
+	font-size: 5em;
+	margin: 0 auto;
+}
+
+section article table td {
+	text-align: center;
+	width: 100px;
+}
+
+#unouno, #unodos, #dosuno, #dosdos {
+	border-bottom: 8px solid red;
+	border-right: 8px solid red;
+}
+
+#unotres, #dostres {
+	border-bottom: 8px solid red;
+}
+
+#tresuno, #tresdos {
+	border-right: 8px solid red;
+}
