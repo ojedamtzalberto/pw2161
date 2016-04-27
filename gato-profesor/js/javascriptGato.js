@@ -46,6 +46,11 @@ function escribe(casilla)
 	validaJugada(letra);
 }
 
+function reiniciarConteo() 
+{
+	localStorage.removeItem("webCuentaJuego");
+}
+
 function validaJugada(letra) 
 {
 	var ganador = false;
