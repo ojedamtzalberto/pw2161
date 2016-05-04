@@ -1,0 +1,44 @@
+body {
+	color: #8d8a7d;
+	font-family: sans-serif;
+	font-size: 16px;
+	margin: 0 auto;
+	width: 1024px;
+}
+
+article {
+	
+}
+
+article img {
+	border: 1px solid black;
+	border-radius: 50%;
+	margin-bottom: 5px;
+}
+
+h2, article {
+	text-align: center;
+}
+
+#txtNombreUser, #txtApellidoUser {
+	text-transform: capitalize;
+}
+
+button {
+	background-color: #f0f5f5;
+	border: 1px solid #f0f5f5;
+	border-radius: 2px;
+	color: #75a3a3;
+	font-size: 1.5em;
+	margin-top: 10px;
+}
+
+button:hover {
+	border: 1px solid #75a3ba;
+	box-shadow: 1px 1px 1px #334d4d;
+	color: #334d4d;
+}
+
+button:visited {
+	border: none;
+}
