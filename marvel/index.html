@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<script src="js/jquery-1.12.3.js"></script>
+	<script src="js/eventos.js"></script>
+	<link rel="stylesheet" href="css/estilos.css">
+	<link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+	<title>Marvel API</title>
+</head>
+<body>		
+	<article>
+		<table>		
+			<tbody>
+				<tr>
+					<td id="imagen" class="titulo" colspan=2></td>
+				</tr>
+				<tr>
+					<td class="titulo">Nombre</td>
+					<td id="nombre"></td>
+				</tr>
+				<tr>
+					<td class="titulo">Descripcion</td>
+					<td id="descripcion"></td>
+				</tr>
+				<tr>
+					<td class="titulo">Comics</td>
+					<td id="comics"></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<span id="siguiente"></span>
+		<span id="anterior"></span>
+
+		<input type="text" placeholder="Ingresa un Superhéroe ..." id="txtBusqueda">
+		<input type="button" value="Buscar!" id="boton">
+	</article>	
+</body>
+</html>
+
+<!--ts=1&apikey=bea995e868107cd12460cb451c07672f&hash=bda0fe37ac3585131a4397887dc98b08 -->
