@@ -67,6 +67,7 @@ var inicio = function()
 
 	var buscarClic = function()
 	{
+		indice = 0;
 		texto = $("#inputBusqueda").val();
 		consulta(texto);
 	}
@@ -75,6 +76,7 @@ var inicio = function()
 	{
 		if(tecla.which == 13) //Si la tecla presionada es enter
 		{
+			indice = 0;
 			texto = $("#inputBusqueda").val();
 			consulta(texto);
 		}
