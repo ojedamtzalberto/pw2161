@@ -6,11 +6,26 @@ body {
 	background-size: cover;
 	color: white;
 	font-family: 'Open Sans', sans-serif;
+	font-size: 20px;
 	margin: 0 auto;
 	width: 1024px;
 }
 
+a {
+	color: #99e6ff;	
+}
+
+div {
+	margin-top: 100px;
+	margin-bottom: 100px;
+}
+
+span {
+	font-size: 4em;
+}
+
 table {
+	margin: 50px auto;
 	width: 600px;
 }
 
@@ -18,15 +33,49 @@ td {
 	padding-bottom: 10px;
 }
 
+#boton {		
+	border-radius: 5px;	
+	font-family: 'Open Sans';
+	font-size: 1.5em;
+	height: 50px;	
+	padding-bottom: 20px;
+	width: 200px;
+}
+
+#boton:hover {
+	cursor: pointer;
+}
+
+#inputBusqueda {
+	color: gray;
+	font-size: 30px;	
+	height: 40px;
+	margin-bottom: 20px;
+	width: 600px;
+}
+
+#imagen, div {
+	text-align: center;
+}
+
 #imagen img {
 	border: 5px solid white;
-	border-radius: 100%;
+	border-radius: 100%;	
 	width: 400px;
 }
 
 #nombre {
-	font-family: 'Kaushan Script', cursive;
+	font-family: 'Roboto Condensed', sans-serif;
+	font-size: 30px;	
+}
+
+#nombre, .titulo {
 	text-transform: uppercase;
+}
+
+#siguiente {
+	float: right;
+	margin-right: 20px;
 }
 
 .titulo {

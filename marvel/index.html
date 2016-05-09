@@ -5,9 +5,9 @@
 	<script src="js/jquery-1.12.3.js"></script>
 	<script src="js/eventos.js"></script>
 	<link rel="stylesheet" href="css/estilos.css">
-	<link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
-	<title>Marvel API</title>
+	<title>Marvel Superheroes</title>
 </head>
 <body>		
 	<article>
@@ -17,25 +17,31 @@
 					<td id="imagen" class="titulo" colspan=2></td>
 				</tr>
 				<tr>
-					<td class="titulo">Nombre</td>
+					<td class="titulo" id="tnombre"></td>
 					<td id="nombre"></td>
 				</tr>
 				<tr>
-					<td class="titulo">Descripcion</td>
+					<td class="titulo" id="tdescripcion"></td>
 					<td id="descripcion"></td>
 				</tr>
 				<tr>
-					<td class="titulo">Comics</td>
+					<td class="titulo" id="tcomics"></td>
 					<td id="comics"></td>
 				</tr>
+				<tr>
+					<td><a href="#" id="anterior"></a></td>
+					<td><a href="#" id="siguiente"></a></td>
+				</tr>
 			</tbody>
-		</table>
-
-		<span id="siguiente"></span>
-		<span id="anterior"></span>
-
-		<input type="text" placeholder="Ingresa un Superhéroe ..." id="txtBusqueda">
-		<input type="button" value="Buscar!" id="boton">
+		</table>					
+		
+		<div>
+			<span>INGRESA SUPERHÉROE</span>
+			<br>
+			<input type="text" id="inputBusqueda">
+			<br>
+			<button id="boton">Buscar!</button>
+		</div>		
 	</article>	
 </body>
 </html>
