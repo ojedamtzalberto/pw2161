@@ -1,0 +1,23 @@
+body
+{
+	font-size: 16px;
+	margin: 0 auto;
+	max-width: 1024px;
+}
+
+header nav
+{
+	display: none;
+	text-align: center;
+}
+
+header nav ul li 
+{
+	display: inline-block;
+}
+
+#datosUsuario
+{
+	margin: 0 auto;
+	width: 320px;
+}
