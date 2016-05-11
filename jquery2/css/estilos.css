@@ -16,6 +16,11 @@ header nav ul li
 	display: inline-block;
 }
 
+header nav ul li button
+{
+	width: 89px;
+}
+
 #datosUsuario
 {
 	margin: 0 auto;
