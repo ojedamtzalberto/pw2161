@@ -13,9 +13,9 @@
 			<ul>
 				<li><button class="btn btn-default">Inicio</button></li>
 				<li><button id="btnAltas" class="btn btn-success">Alta</button></li>
-				<li><button class="btn btn-primary">Baja</button></li>
+				<li><button id="btnBajas" class="btn btn-primary">Baja</button></li>
 				<li><button class="btn btn-warning">Cambios</button></li>
-				<li><button class="btn btn-danger">Consultas</button></li>
+				<li><button id="btnConsultas" class="btn btn-danger">Consultas</button></li>
 				<li><button class="btn btn-info">Salir</button></li>
 			</ul>
 		</nav>
@@ -37,8 +37,8 @@
 				</article>
 			</article>
 		</section>
-		<section  id="altaUsuarios">
-			<article>
+		<section>
+			<article id="altaUsuarios">
 				<h2>Alta de Usuarios</h2>
 				<form action="" id="frmAltaUsuarios">
 					<input type="text" class="form-control" id="txtNombreUsuario" name="txtNombreUsuario" placeholder="Usuario" required>
@@ -50,6 +50,12 @@
 					<input type="text" class="form-control" id="txtDepartamento" name="txtDepartamento" placeholder="Departamento" required> 
 					<input type="submit" id="btnAltaUsuario" name="btnAltaUsuario" class="btn btn-success btn-lg btn-block">
 				</form>
+			</article>
+			<article id="consultasUsuarios">
+				<h2>Listado de Usuarios</h2>
+				<table class="table table-striped" name="tablaConsultas" id="tablaConsultas">
+					
+				</table>
 			</article>
 		</section>
 	</main>

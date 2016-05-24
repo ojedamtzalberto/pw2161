@@ -21,12 +21,14 @@ header nav ul li button
 	width: 89px;
 }
 
-#altaUsuarios
+#altaUsuarios, #consultasUsuarios
 {
 	display:none;
+	margin: 0 auto;
+	width: 320px;
 }
 
-#datosUsuario, #altaUsuarios
+#datosUsuario
 {
 	margin: 0 auto;
 	width: 320px;
