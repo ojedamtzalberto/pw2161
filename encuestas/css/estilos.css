@@ -1,0 +1,37 @@
+body {
+	font-size: 16px;
+	margin: 0 auto;
+	width: 1024px;
+}
+
+header nav {
+	text-align: center;
+}
+
+header nav ul li {
+	display: inline-block;
+	margin-right: 5px;
+}
+
+header nav ul li button {
+	width: 89px;
+}
+
+form {
+	margin: 0 auto;
+	width: 500px;
+}
+
+#frmAltaEncuesta, #tablaConsulta {
+	display: none;
+}
+
+#fieldNombreClave {
+	text-align: center;
+	margin-bottom: 5px;
+}
+
+#txtClave {
+	margin-bottom: 10px;
+	text-align: center;
+}

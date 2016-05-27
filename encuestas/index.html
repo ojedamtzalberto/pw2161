@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/estilos.css">
+	<title>Encuestas</title>
+</head>
+<body>
+	<header>
+		<h1>Encuestas Online</h1>
+		<nav>
+			<ul>
+				<li><button id="btnAlta" class="btn btn-success">Altas</button></li>
+				<li><button id="btnBaja" class="btn btn-danger">Bajas</button></li>
+				<li><button id="btnConsulta" class="btn btn-info">Consultas</button></li>
+				<li><button class="btn btn-primary">Cambios</button></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<section>
+			<article id="altaEncuestas">
+				<form action="#" id="frmAltaEncuesta">
+					<input type='text' id='txtClave' class='form-control' placeholder='Ingresa clave'>
+					<fieldset id="fieldNombreClave" class="form-inline">
+						<input type="text" class="form-control" id="txtNombre" name="txtNombre" placeholder="Nombre Encuesta" required autofocus>
+						<input type="text" class="form-control" id="txtSemestre" name="txtSemestre" placeholder="Semestre">
+					</fieldset>
+					<fieldset id="fieldPreguntasRespuestas">
+						<input type="text" class="form-control" id="txtPregunta1" name="txtPregunta1" placeholder="Pregunta 1" required>
+						<input type="text" class="form-control" id="txtRespuesta1" name="txtRespuesta1" placeholder="Respuesta 1" required>
+						<input type="text" class="form-control" id="txtPregunta2" name="txtPregunta2" placeholder="Pregunta2" required>
+						<input type="text" class="form-control" id="txtRespuesta2" name="txtRespuesta2" placeholder="Respuesta2" required>
+						<input type="text" class="form-control" id="txtPregunta3" name="txtPregunta3" placeholder="Pregunta3" required>
+						<input type="text" class="form-control" id="txtRespuesta3" name="txtRespuesta3" placeholder="Respuesta3" required>
+					</fieldset>
+					<input type="submit" id="boton-form" class="btn btn-success btn-block">
+				</form>
+			</article>
+			<article id="consultaEncuestas">
+				<table class="table" id="tablaConsulta" name="tablaConsulta">
+					
+				</table>
+			</article>
+		</section>
+	</main>
+	<script src="js/jquery-1.12.3.js"></script>
+	<script src="js/eventos.js"></script>
+</body>
+</html>

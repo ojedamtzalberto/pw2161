@@ -85,7 +85,7 @@ var iniciaApp = function()
 			error: function(xhr,ajaxOptions,thrownError){
 				console.log("Algo salió mal");
 			}
-		})
+		});
 	}
 
 	var Bajas = function()
@@ -190,7 +190,7 @@ var iniciaApp = function()
 
 	$("#frmValidaEntrada").on("submit",validarEntrada);
 	$("#btnAltas").on("click",Altas);
-	$("#frmAltaUsuarios").on("submit",AltaUsuario);
+	// $("#frmAltaUsuarios").on("submit",AltaUsuario);
 	$("#btnBajas").on("click",Bajas);	
 	$("#btnConsultas").on("click",Consultas);
 	// Eventos dinámicos
