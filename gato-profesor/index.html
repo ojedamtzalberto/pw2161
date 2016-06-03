@@ -3,38 +3,40 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="css/estilos.css">
-	<script src="js/javascriptGato.js"></script>
 	<title>Juego del Gato</title>
 </head>
-<body onload="iniciaGato();" unload="">
+<body>
 	<header>
 		<h1 id="tituloJuego">Juego del Gato</h1>
 	</header>
 	<section>
 		<article id="reiniciar">
-			<button onclick="reiniciarConteo()">Reiniciar conteo</button>
+			<button id="btn-reiniciar">Reiniciar conteo</button>
+			<button onclick="iniciar()">Empezar</button>
 		</article>
 		<article>
 			<form action="#" name="juegoGato">
 				<table>
 					<tr>
-						<td onclick="escribe(this.id)" id="unouno">&nbsp;</td>
-						<td onclick="escribe(this.id)" id="unodos">&nbsp;</td>
-						<td onclick="escribe(this.id)" id="unotres">&nbsp;</td>
+						<td id="unouno">&nbsp;</td>
+						<td id="unodos">&nbsp;</td>
+						<td id="unotres">&nbsp;</td>
 					</tr>
 					<tr>
-						<td onclick="escribe(this.id)" id="dosuno">&nbsp;</td>
-						<td onclick="escribe(this.id)" id="dosdos">&nbsp;</td>
-						<td onclick="escribe(this.id)" id="dostres">&nbsp;</td>
+						<td id="dosuno">&nbsp;</td>
+						<td id="dosdos">&nbsp;</td>
+						<td id="dostres">&nbsp;</td>
 					</tr>
 					<tr>
-						<td onclick="escribe(this.id)" id="tresuno">&nbsp;</td>
-						<td onclick="escribe(this.id)" id="tresdos">&nbsp;</td>
-						<td onclick="escribe(this.id)" id="trestres">&nbsp;</td>
+						<td id="tresuno">&nbsp;</td>
+						<td id="tresdos">&nbsp;</td>
+						<td id="trestres">&nbsp;</td>
 					</tr>
 				</table>
 			</form>
 		</article>
 	</section>
+	<script src="js/jquery-1.12.3.js"></script>
+	<script src="js/javascriptGato.js"></script>
 </body>
 </html>
