@@ -1,9 +1,9 @@
 // Variables Globales
 // PLDC = Se usan en todo el código.
-var turno 			= false;
 var letraCasilla 	= "";
 var cuentaJuego		= 0;
 var cuentaJugadas 	= 0;
+var turno 			= '';
 
 function iniciaGato() {
 	// Eliminar la variable de localStorage
@@ -25,25 +25,18 @@ function iniciaGato() {
 	else
 		alert("¡Utiliza un navegador actualizado!");
 
-	var escribe = function() 
+	var escribe = function(idCasilla) 
 	{
-		var letra = "";
-		letraCasilla = this.id;
+		letraCasilla = $("#"+idCasilla).html();
 		// if(letraCasilla == "&nbsp;")
 		console.log(letraCasilla);
 		if(letraCasilla !="X" && letraCasilla!="O") 
 		{
-			if(!turno) 
-				letra = "X";
-			else
-				letra = "O";
-			$("#"+letraCasilla).html(letra);
-
-			turno = !turno;
+			$("#"+idCasilla).html(turno);
 			cuentaJugadas++;
 		}
 		//Para saber quien ganó, validamos la jugada
-		validaJugada(letra);
+		validaJugada(turno);
 	}
 
 	var reiniciarConteo = function() 
@@ -87,17 +80,187 @@ function iniciaGato() {
 		if(ganador) 
 		{
 			alert("GANADOR! " + letra);
+			cuentaJuego++;
 			localStorage.webCuentaJuego = cuentaJuego;
+			reiniciar();
 		}
 		else if(ganador == false && cuentaJugadas == 9)
 		{
 			alert("¡Empate!");
+			cuentaJuego++;
 			localStorage.webCuentaJuego = cuentaJuego;
+			reiniciar();
 		}
 	}
 
-	$("td").on("click",escribe);
+	// Se llama al dar clic en el botón empezar, va y busca el turno en la tabla turnos y se lo asigna
+	var asignaTurno = function()
+	{
+		event.preventDefault();
+
+		if(turno != '')
+		{
+			alert("Ya tienes un turno asignado, espera a otro jugador");
+			return;
+		}
+
+		var parametros = "accion=pideTurno"+
+						 "&id="+Math.random();
+		$.ajax({
+			beforeSend: function(){
+				console.log("Pide turno");
+			},
+			cache: false,
+			type: "POST",
+			dataType: "json",
+			url: "php/funciones.php",
+			data: parametros,
+			success: function(response){
+				if(response.respuesta)
+				{
+					alert("Tu turno es " + response.turno + "!");
+					turno = response.turno;					
+				}
+				else
+				{
+					("No se pudo asignar un turno");
+				}
+			},
+			error: function(xhr,ajaxOptions,thrownError){
+				console.log(thrownError);
+			}
+		});
+	}
+
+	// Se verifica que sea el turno del jugador
+	var validaTurno = function()
+	{
+		idCasilla = this.id;
+		var datos = "turno="+turno;
+		var parametros = "accion=validaTurno&"+datos+
+						 "&id="+Math.random();
+		$.ajax({
+			beforeSend: function(){
+				console.log("Valida Turno");
+			},
+			cache: false,
+			type: "POST",
+			dataType: "json",
+			url: "php/funciones.php",
+			data: parametros,
+			success: function(response){
+				if(response.respuesta)
+				{
+					validaCasilla(idCasilla);
+				}
+				else
+				{
+					alert("No es tu turno");
+				}
+			},
+			error: function(xhr,ajaxOptions,thrownError){
+				console.log(thrownError);
+			}
+		});
+	}
+
+	// Se verifica que la casilla no esté ocupada
+	// Si no está ocupada realiza la jugada
+	var validaCasilla = function(idCasilla)
+	{
+		var renglon = $("#"+idCasilla).attr("value").toString().charAt(0);
+		var columna = $("#"+idCasilla).attr("value").toString().charAt(1);
+
+		var datos = "renglon=" + renglon + "&columna=" + columna + "&turno=" + turno;
+		var parametros = "accion=validaCasilla&"+datos+
+						 "&id="+Math.random();
+		$.ajax({
+			beforeSend: function(){
+				console.log("Valida Casilla");
+			},
+			cache: false,
+			type: "POST",
+			dataType: "json",
+			url: "php/funciones.php",
+			data: parametros,
+			success: function(response){
+				if(response.respuesta)
+				{
+					escribe(idCasilla);
+				}
+				else
+				{
+					alert("Casilla ocupada");
+				}
+			},
+			error: function(xhr,ajaxOptions,thrownError){
+				console.log(thrownError);
+			}
+		});
+	}
+
+	var refrescar = function()
+	{
+		var parametros = "accion=refrescar&"+
+						 "&id="+Math.random();
+		$.ajax({
+			beforeSend: function(){
+				console.log("Refrescar jugadas");
+			},
+			cache: false,
+			type: "POST",
+			dataType: "json",
+			url: "php/funciones.php",
+			data: parametros,
+			success: function(response){				
+				console.log(response);
+				$("table td").html("&nbsp");
+
+				for(i = 0; i < response.jugadas.length; i++)
+				{
+					var columna = response.jugadas[i].columna;
+					var renglon = response.jugadas[i].renglon;
+					var valor   = response.jugadas[i].turno;
+					var value = renglon + "" + columna;
+
+					$("td[value=\'"+value+"\']").html(valor);
+				}
+				// var value = columna + "" + renglon;
+				// $("td[value=\'"+value+"\']").html("X");
+			},
+			error: function(xhr,ajaxOptions,thrownError){
+				console.log(thrownError);
+			}
+		});
+	}
+
+	// Borra los registros de la tabla jugadas
+	var reiniciar = function()
+	{
+		var parametros = "accion=reiniciar&"+
+						 "&id="+Math.random();
+		$.ajax({
+			beforeSend: function(){
+				console.log("Reiniciar jugadas");
+			},
+			cache: false,
+			type: "POST",
+			dataType: "json",
+			url: "php/funciones.php",
+			data: parametros,
+			success: function(response){						
+				$("table td").html("&nbsp");
+			},
+			error: function(xhr,ajaxOptions,thrownError){
+				console.log(thrownError);
+			}
+		});
+	}
+
+	$("td").on("click",validaTurno);
 	$("#btn-reiniciar").on("click",reiniciarConteo);
+	$("#btn-empezar").on("click",asignaTurno);
+	$("#btn-refrescar").on("click",refrescar);
 }
 
 $(document).on("ready",iniciaGato);
