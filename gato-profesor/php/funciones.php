@@ -169,6 +169,18 @@ function insertaTurno()
 	print json_encode($salidaJSON);
 }
 
+function cuentaJugadas()
+{
+	$jugadas = 0;
+	conexion();
+	$consulta = "select turno from jugadas";
+	$resultado = mysql_query($consulta);
+	$jugadas = mysql_num_rows($resultado);
+
+	$salidaJSON = array('jugadas' => $jugadas);
+	print json_encode($salidaJSON);
+}
+
 $accion = $_POST["accion"];
 switch ($accion) {
 	case 'pideTurno':
@@ -188,6 +200,9 @@ switch ($accion) {
 		break;
 	case 'insertaTurno':
 		insertaTurno();
+		break;
+	case 'cuentaJugadas':
+		cuentaJugadas();
 		break;
 	default:
 		# code...

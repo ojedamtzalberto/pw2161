@@ -2,7 +2,6 @@
 // PLDC = Se usan en todo el código.
 var letraCasilla 	= "";
 var cuentaJuego		= 0;
-var cuentaJugadas 	= 0;
 var turno 			= '';
 
 function iniciaGato() {
@@ -30,11 +29,8 @@ function iniciaGato() {
 		letraCasilla = $("#"+idCasilla).html();
 		// if(letraCasilla == "&nbsp;")
 		console.log(letraCasilla);
-		if(letraCasilla !="X" && letraCasilla!="O") 
-		{
-			$("#"+idCasilla).html(turno);
-			cuentaJugadas++;
-		}
+
+		$("#"+idCasilla).html(turno);
 		//Para saber quien ganó, validamos la jugada
 		validaJugada(turno);
 	}
@@ -46,51 +42,54 @@ function iniciaGato() {
 
 	var validaJugada = function(letra) 
 	{
-		var ganador = false;
-		var b11 = document.getElementById("unouno").innerHTML;
-		var b12 = document.getElementById("unodos").innerHTML;
-		var b13 = document.getElementById("unotres").innerHTML;
-		var b21 = document.getElementById("dosuno").innerHTML;
-		var b22 = document.getElementById("dosdos").innerHTML;
-		var b23 = document.getElementById("dostres").innerHTML;
-		var b31 = document.getElementById("tresuno").innerHTML;
-		var b32 = document.getElementById("tresdos").innerHTML;
-		var b33 = document.getElementById("trestres").innerHTML;
-		// Jugadas
-		// Renglones
-		if(b11==b12 && b12==b13 && b11!="&nbsp;")
-			ganador = true;
-		else if(b21==b22 && b22==b23 && b21!="&nbsp;")
-			ganador = true;
-		else if(b31==b32 && b32==b33 && b31!="&nbsp;")
-			ganador = true;
-		// Columnas
-		else if(b11==b21 && b21==b31 && b11!="&nbsp;")
-			ganador = true;
-		else if(b12==b22 && b22==b32 && b12!="&nbsp;")
-			ganador = true;
-		else if(b13==b23 && b23==b33 && b13!="&nbsp;")
-			ganador = true;
-		// Diagonales
-		else if(b11==b22 && b22==b33 && b11!="&nbsp;")
-			ganador = true;
-		else if(b13==b22 && b22==b31 && b13!="&nbsp;")
-			ganador = true;
-		// ¿Alguien ganó?
-		if(ganador) 
-		{
-			alert("GANADOR! " + letra);
-			cuentaJuego++;
-			localStorage.webCuentaJuego = cuentaJuego;
-			reiniciar();
-		}
-		else if(ganador == false && cuentaJugadas == 9)
-		{
-			alert("¡Empate!");
-			cuentaJuego++;
-			localStorage.webCuentaJuego = cuentaJuego;
-			reiniciar();
-		}
+		cuentaJugadas(function(jugadas){
+			console.log("JUGADAS JUGADAS " + jugadas);
+			var ganador = false;
+			var b11 = document.getElementById("unouno").innerHTML;
+			var b12 = document.getElementById("unodos").innerHTML;
+			var b13 = document.getElementById("unotres").innerHTML;
+			var b21 = document.getElementById("dosuno").innerHTML;
+			var b22 = document.getElementById("dosdos").innerHTML;
+			var b23 = document.getElementById("dostres").innerHTML;
+			var b31 = document.getElementById("tresuno").innerHTML;
+			var b32 = document.getElementById("tresdos").innerHTML;
+			var b33 = document.getElementById("trestres").innerHTML;
+			// Jugadas
+			// Renglones
+			if(b11==b12 && b12==b13 && b11!="&nbsp;")
+				ganador = true;
+			else if(b21==b22 && b22==b23 && b21!="&nbsp;")
+				ganador = true;
+			else if(b31==b32 && b32==b33 && b31!="&nbsp;")
+				ganador = true;
+			// Columnas
+			else if(b11==b21 && b21==b31 && b11!="&nbsp;")
+				ganador = true;
+			else if(b12==b22 && b22==b32 && b12!="&nbsp;")
+				ganador = true;
+			else if(b13==b23 && b23==b33 && b13!="&nbsp;")
+				ganador = true;
+			// Diagonales
+			else if(b11==b22 && b22==b33 && b11!="&nbsp;")
+				ganador = true;
+			else if(b13==b22 && b22==b31 && b13!="&nbsp;")
+				ganador = true;
+			// ¿Alguien ganó?
+			if(ganador) 
+			{
+				alert("GANADOR! " + letra);
+				cuentaJuego++;
+				localStorage.webCuentaJuego = cuentaJuego;
+				reiniciar();
+			}
+			else if(ganador == false && jugadas == 10)
+			{
+				alert("¡Empate!");
+				cuentaJuego++;
+				localStorage.webCuentaJuego = cuentaJuego;
+				reiniciar();
+			}
+		});
 	}
 
 	// Se llama al dar clic en el botón empezar, va y busca el turno en la tabla turnos y se lo asigna
@@ -281,6 +280,29 @@ function iniciaGato() {
 			data: parametros,
 			success: function(response){						
 				console.log("Se ha quitado el turno");
+			},
+			error: function(xhr,ajaxOptions,thrownError){
+				console.log(thrownError);
+			}
+		});
+	}
+
+	// Regresa la cantidad de jugadas que hay registradas en la tabla jugadas
+	function cuentaJugadas(jugadas)
+	{
+		var parametros = "accion=cuentaJugadas"+
+						 "&id="+Math.random();
+		$.ajax({
+			beforeSend: function(){
+				console.log("Cuenta Jugadas");
+			},
+			cache: false,
+			type: "POST",
+			dataType: "json",
+			url: "php/funciones.php",
+			data: parametros,
+			success: function(response){			
+				jugadas(response.jugadas);
 			},
 			error: function(xhr,ajaxOptions,thrownError){
 				console.log(thrownError);
