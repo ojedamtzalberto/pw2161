@@ -2,19 +2,15 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/estilos.css">
 	<title>Juego del Gato</title>
 </head>
 <body>
-	<header>
+	<header class="page-header">
 		<h1 id="tituloJuego">Juego del Gato</h1>
 	</header>
 	<section>
-		<article id="reiniciar">
-			<button id="btn-reiniciar">Reiniciar conteo</button>
-			<button id="btn-empezar">Empezar</button>
-			<button id="btn-refrescar">Refrescar</button>
-		</article>
 		<article>
 			<form action="#" name="juegoGato">
 				<table>
@@ -35,6 +31,11 @@
 					</tr>
 				</table>
 			</form>
+		</article>
+		<article id="reiniciar">
+			<button id="btn-reiniciar" class="btn btn-primary">Reiniciar conteo</button>
+			<button id="btn-empezar" class="btn btn-success">Empezar</button>
+			<button id="btn-refrescar" class="btn btn-primary">Refrescar</button>
 		</article>
 	</section>
 	<script src="js/jquery-1.12.3.js"></script>

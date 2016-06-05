@@ -38,6 +38,7 @@ function iniciaGato() {
 	var reiniciarConteo = function() 
 	{
 		localStorage.removeItem("webCuentaJuego");
+		iniciaGato();
 	}
 
 	var validaJugada = function(letra) 
@@ -81,6 +82,7 @@ function iniciaGato() {
 				cuentaJuego++;
 				localStorage.webCuentaJuego = cuentaJuego;
 				reiniciar();
+				location.reload();
 			}
 			else if(ganador == false && jugadas == 10)
 			{
@@ -88,6 +90,7 @@ function iniciaGato() {
 				cuentaJuego++;
 				localStorage.webCuentaJuego = cuentaJuego;
 				reiniciar();
+				location.reload();
 			}
 		});
 	}
@@ -134,6 +137,7 @@ function iniciaGato() {
 	// Se verifica que sea el turno del jugador
 	var validaTurno = function()
 	{
+		validaJugada();
 		idCasilla = this.id;
 		var datos = "turno="+turno;
 		var parametros = "accion=validaTurno&"+datos+

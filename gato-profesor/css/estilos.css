@@ -15,8 +15,15 @@ section article table {
 }
 
 section article table td {
+	cursor: default;
 	text-align: center;
 	width: 100px;
+}
+
+#btn-reiniciar,#btn-empezar,#btn-refrescar
+{
+	margin-top: 50px;
+	width: 150px;
 }
 
 #unouno, #unodos, #dosuno, #dosdos {
@@ -26,6 +33,11 @@ section article table td {
 
 #unotres, #dostres {
 	border-bottom: 8px solid red;
+}
+
+#reiniciar
+{
+	text-align: center;
 }
 
 #tresuno, #tresdos {
