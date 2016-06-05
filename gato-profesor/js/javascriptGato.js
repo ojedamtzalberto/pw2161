@@ -100,7 +100,7 @@ function iniciaGato() {
 
 		if(turno != '')
 		{
-			alert("Ya tienes un turno asignado, espera a otro jugador");
+			alert("Ya tienes un turno asignado");
 			return;
 		}
 
@@ -123,7 +123,7 @@ function iniciaGato() {
 				}
 				else
 				{
-					("No se pudo asignar un turno");
+					alert("No se pudo asignar un turno");
 				}
 			},
 			error: function(xhr,ajaxOptions,thrownError){
@@ -201,6 +201,8 @@ function iniciaGato() {
 
 	var refrescar = function()
 	{
+		// Primero se valida jugada para ver si el otro jugador gana al momento de refrescar
+		validaJugada();
 		var parametros = "accion=refrescar&"+
 						 "&id="+Math.random();
 		$.ajax({
@@ -234,7 +236,7 @@ function iniciaGato() {
 		});
 	}
 
-	// Borra los registros de la tabla jugadas
+	// Borra los registros de la tabla jugadas y limpia el tablero
 	var reiniciar = function()
 	{
 		var parametros = "accion=reiniciar&"+
@@ -257,10 +259,40 @@ function iniciaGato() {
 		});
 	}
 
+	// Si el usuario cierra la pestaña o el navegador, su turno se agrega a la base de datos
+	// para que esté disponible
+	var quitaTurno = function()
+	{		
+		if(turno == '')
+			return;
+
+		var datos = "turno=" + turno;
+		var parametros = "accion=insertaTurno&"+datos+
+						 "&id="+Math.random();
+						 console.log(turno);
+		$.ajax({
+			beforeSend: function(){
+				console.log("Quita Turno");
+			},
+			cache: false,
+			type: "POST",
+			dataType: "json",
+			url: "php/funciones.php",
+			data: parametros,
+			success: function(response){						
+				console.log("Se ha quitado el turno");
+			},
+			error: function(xhr,ajaxOptions,thrownError){
+				console.log(thrownError);
+			}
+		});
+	}
+
 	$("td").on("click",validaTurno);
 	$("#btn-reiniciar").on("click",reiniciarConteo);
 	$("#btn-empezar").on("click",asignaTurno);
 	$("#btn-refrescar").on("click",refrescar);
+	$(window).on("beforeunload",quitaTurno);
 }
 
 $(document).on("ready",iniciaGato);

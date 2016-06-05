@@ -31,7 +31,7 @@ function pideTurno()
 {
 	$respuesta = false;
 	conexion();
-	$consulta = "select turno from turnos";
+	$consulta = "select turno from turnos limit 1";
 	$resultado = mysql_query($consulta);
 	$turno = "";
 
@@ -41,12 +41,7 @@ function pideTurno()
 		$registro = mysql_fetch_array($resultado);
 		$turno = $registro["turno"];
 
-		if($turno == 'X')
-			$nuevoTurno = 'O';
-		else
-			$nuevoTurno = 'X';
-
-		$consulta = sprintf("update turnos set turno = '%s'",$nuevoTurno);
+		$consulta = sprintf("delete from turnos where turno = '%s'",$turno);
 		mysql_query($consulta);
 	}
 
@@ -148,6 +143,9 @@ function reiniciar()
 	mysql_query($delete);
 	$insert = "insert into jugadas (turno, renglon, columna) values ('X',0,0)";
 	mysql_query($insert);
+	$update = "update turnos set turno = 'X'";
+	mysql_query($update);
+
 	$respuesta = true;
 	$salidaJSON = array('respuesta' => $respuesta);
 	print json_encode($salidaJSON);
@@ -155,8 +153,20 @@ function reiniciar()
 
 function conexion()
 {
-	mysql_connect("u961938981_gato","u961938981_pw","ODG!2mS@n6");
+	mysql_connect("localhost","root","");
 	mysql_select_db("gato");
+}
+
+function insertaTurno()
+{
+	$turno = GetSQLValueString($_POST["turno"],"text");
+	conexion();
+	$insert = sprintf("insert into turnos values (%s)",$turno);
+	mysql_query($insert);
+
+	$respuesta = true;
+	$salidaJSON = array('respuesta' => $respuesta);
+	print json_encode($salidaJSON);
 }
 
 $accion = $_POST["accion"];
@@ -175,6 +185,9 @@ switch ($accion) {
 		break;
 	case 'reiniciar':
 		reiniciar();
+		break;
+	case 'insertaTurno':
+		insertaTurno();
 		break;
 	default:
 		# code...
