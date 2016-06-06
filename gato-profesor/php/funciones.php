@@ -32,6 +32,7 @@ function pideTurno()
 	$respuesta = false;
 	conexion();
 	$consulta = "select turno from turnos limit 1";
+	$consultaJugadas = "select * from jugadas";
 	$resultado = mysql_query($consulta);
 	$turno = "";
 
@@ -69,6 +70,7 @@ function validaTurno()
 
 function validaCasilla()
 {
+	$empate = false;
 	$respuesta = true;
 	$renglon = GetSQLValueString($_POST["renglon"],"long");
 	$columna = GetSQLValueString($_POST["columna"],"long");
@@ -101,7 +103,16 @@ function validaCasilla()
 		mysql_query($consulta);
 	}
 
-	$salidaJSON = array('respuesta' => $respuesta);
+	$consultaJugadas = "select * from jugadas";
+	$consultaTurnos = "select * from turnos";
+	$resultadoJugadas = mysql_query($consultaJugadas);
+	$resultadoTurnos = mysql_query($consultaTurnos);
+	if(mysql_num_rows($resultadoJugadas) > 9 && mysql_num_rows($resultadoTurnos) > 0)
+	{
+		$empate = true;
+	}
+
+	$salidaJSON = array('respuesta' => $respuesta, 'empate' => $empate);
 	print json_encode($salidaJSON);
 }
 

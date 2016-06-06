@@ -95,7 +95,7 @@ function iniciaGato() {
 				alert("¡Empate!");
 				cuentaJuego++;
 				localStorage.webCuentaJuego = cuentaJuego;
-				reiniciar();
+				location.reload();
 			}
 		});
 	}
@@ -197,7 +197,12 @@ function iniciaGato() {
 			url: "php/funciones.php",
 			data: parametros,
 			success: function(response){
-				if(response.respuesta)
+				if(response.empate)
+				{
+					console.log("HUBO EMPATE");
+					reiniciar();
+				}
+				else if(response.respuesta)
 				{
 					escribe(idCasilla);
 				}
