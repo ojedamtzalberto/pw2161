@@ -3,7 +3,6 @@
 var letraCasilla 	= "";
 var cuentaJuego		= 0;
 var turno 			= '';
-var perdiste 		= false;
 
 function iniciaGato() {
 	// Eliminar la variable de localStorage
@@ -39,7 +38,6 @@ function iniciaGato() {
 	var reiniciarConteo = function() 
 	{
 		localStorage.removeItem("webCuentaJuego");
-		iniciaGato();
 	}
 
 	var validaJugada = function(letra) 
@@ -77,18 +75,12 @@ function iniciaGato() {
 			else if(b13==b22 && b22==b31 && b13!="&nbsp;")
 				ganador = true;
 			// ¿Alguien ganó?
-			if(ganador && !perdiste) 
+			if(ganador) 
 			{
 				alert("GANADOR! " + letra);
 				cuentaJuego++;
 				localStorage.webCuentaJuego = cuentaJuego;
-				if(letra != turno)
-				{
-					perdiste = true;
-					reiniciar();
-				}
-				else
-					location.reload();
+				reiniciar();
 			}
 			else if(ganador == false && jugadas == 10)
 			{
@@ -130,7 +122,7 @@ function iniciaGato() {
 				}
 				else
 				{
-					alert("Hay una partida en curso, espera a que termine");
+					alert("No se pudo asignar un turno");
 				}
 			},
 			error: function(xhr,ajaxOptions,thrownError){
@@ -141,13 +133,7 @@ function iniciaGato() {
 
 	// Se verifica que sea el turno del jugador
 	var validaTurno = function()
-	{		
-		if(turno == '')
-		{
-			alert("No tienes un turno asignado");
-			return;
-		}
-		refrescar();
+	{
 		idCasilla = this.id;
 		var datos = "turno="+turno;
 		var parametros = "accion=validaTurno&"+datos+
@@ -214,6 +200,8 @@ function iniciaGato() {
 
 	var refrescar = function()
 	{
+		// Primero se valida jugada para ver si el otro jugador gana al momento de refrescar
+		validaJugada();
 		var parametros = "accion=refrescar&"+
 						 "&id="+Math.random();
 		$.ajax({
@@ -238,11 +226,8 @@ function iniciaGato() {
 
 					$("td[value=\'"+value+"\']").html(valor);
 				}
-
-				if(turno == 'X')
-					validaJugada('O');
-				else
-					validaJugada('X');
+				// var value = columna + "" + renglon;
+				// $("td[value=\'"+value+"\']").html("X");
 			},
 			error: function(xhr,ajaxOptions,thrownError){
 				console.log(thrownError);
@@ -265,7 +250,7 @@ function iniciaGato() {
 			url: "php/funciones.php",
 			data: parametros,
 			success: function(response){						
-				location.reload();
+				$("table td").html("&nbsp");
 			},
 			error: function(xhr,ajaxOptions,thrownError){
 				console.log(thrownError);
@@ -281,7 +266,6 @@ function iniciaGato() {
 			return;
 
 		var datos = "turno=" + turno;
-		console.log("DATOS " + datos);
 		var parametros = "accion=insertaTurno&"+datos+
 						 "&id="+Math.random();
 						 console.log(turno);
@@ -294,6 +278,7 @@ function iniciaGato() {
 			dataType: "json",
 			url: "php/funciones.php",
 			data: parametros,
+                        async: false,
 			success: function(response){						
 				console.log("Se ha quitado el turno");
 			},
@@ -304,7 +289,7 @@ function iniciaGato() {
 	}
 
 	// Regresa la cantidad de jugadas que hay registradas en la tabla jugadas
-	var cuentaJugadas = function(jugadas)
+	function cuentaJugadas(jugadas)
 	{
 		var parametros = "accion=cuentaJugadas"+
 						 "&id="+Math.random();
@@ -333,4 +318,4 @@ function iniciaGato() {
 	$(window).on("beforeunload",quitaTurno);
 }
 
-$(document).on("ready",iniciaGato);
+$(document).on("ready",iniciaGato);	

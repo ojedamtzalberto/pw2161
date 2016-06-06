@@ -1,5 +1,5 @@
 <?php 
-
+error_reporting(E_ERROR);
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
 {
   $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
@@ -52,9 +52,9 @@ function pideTurno()
 function validaTurno()
 {
 	$respuesta = false;
-	$turno = GetSQLValueString($_POST["turno"],"text");
+	$turno = $_POST["turno"];
 	conexion();
-	$consulta = sprintf("select * from jugadas where renglon = 0 and turno = %s limit 1",$turno);
+	$consulta = sprintf("select * from jugadas where renglon = 0 and turno = '%s' limit 1",$turno);
 	$resultado = mysql_query($consulta);
 
 	if(mysql_num_rows($resultado) > 0)	
@@ -70,9 +70,9 @@ function validaTurno()
 function validaCasilla()
 {
 	$respuesta = true;
-	$renglon = GetSQLValueString($_POST["renglon"],"long");
-	$columna = GetSQLValueString($_POST["columna"],"long");
-	$turno = GetSQLValueString($_POST["turno"],"text");
+	$renglon = $_POST["renglon"];
+	$columna = $_POST["columna"];
+	$turno = $_POST["turno"];
 	conexion();
 	$consulta = sprintf("select * from jugadas where renglon=%d and columna=%d",$renglon,$columna);
 	$resultado = mysql_query($consulta);
@@ -88,7 +88,7 @@ function validaCasilla()
 		$consulta = sprintf("update jugadas set renglon=%d, columna=%d where renglon=0",$renglon,$columna);
 		mysql_query($consulta);
 		// Agrega un registro para el siguiente turno
-		if($turno == "'X'")
+		if($turno == "X")
 		{			
 			$siguienteTurno = 'O';
 		}
@@ -143,23 +143,19 @@ function reiniciar()
 	mysql_query($delete);
 	$insert = "insert into jugadas (turno, renglon, columna) values ('X',0,0)";
 	mysql_query($insert);
+	$update = "update turnos set turno = 'X'";
+	mysql_query($update);
 
 	$respuesta = true;
 	$salidaJSON = array('respuesta' => $respuesta);
 	print json_encode($salidaJSON);
 }
 
-function conexion()
-{
-	mysql_connect("localhost","root","");
-	mysql_select_db("gato");
-}
-
 function insertaTurno()
 {
-	$turno = GetSQLValueString($_POST["turno"],"text");
+	$turno = $_POST["turno"];
 	conexion();
-	$insert = sprintf("insert into turnos values (%s)",$turno);
+	$insert = sprintf("insert into turnos values ('%s')",$turno);
 	mysql_query($insert);
 
 	$respuesta = true;
@@ -179,6 +175,11 @@ function cuentaJugadas()
 	print json_encode($salidaJSON);
 }
 
+function conexion()
+{
+	mysql_connect("localhost","u961938981_pw","ODG!2mS@n6");
+	mysql_select_db("u961938981_gato");
+}
 $accion = $_POST["accion"];
 switch ($accion) {
 	case 'pideTurno':
